@@ -1,0 +1,12 @@
+circuit_id,Qubits,Graph_Entropy,Gate_Density,Latency_SABRE
+vqe_h2_6q,6,1.22,0.35,7.82
+vqe_h2_8q,8,1.26,0.38,11.40
+vqe_lih_8q,8,1.54,0.44,14.12
+vqe_lih_12q,12,1.82,0.48,22.10
+qpe_3q_6q,6,2.10,0.55,10.25
+qpe_4q_12q,12,2.44,0.62,26.80
+grover_3sat_16q,16,2.88,0.72,38.45
+grover_3sat_20q,20,3.12,0.75,49.20
+qft_rand_28q,28,3.34,0.81,71.10
+qft_rand_36q,36,3.62,0.84,94.50
+qft_rand_40q,40,3.88,0.85,112.40

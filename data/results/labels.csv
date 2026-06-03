@@ -1,0 +1,12 @@
+circuit_id,optimized_target
+vqe_h2_6q,0.8854
+vqe_h2_8q,0.8412
+vqe_lih_8q,0.7965
+vqe_lih_12q,0.6844
+qpe_3q_6q,0.7720
+qpe_4q_12q,0.5912
+grover_3sat_16q,0.4855
+grover_3sat_20q,0.3810
+qft_rand_28q,0.2240
+qft_rand_36q,0.1142
+qft_rand_40q,0.0685
