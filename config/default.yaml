@@ -1,0 +1,17 @@
+system:
+  pipeline_id: "quantum_hw_aware_codesign"
+  version: "1.0.0"
+  random_seed: 42
+  logging_level: "INFO"
+
+compiler:
+  optimization_level: 3
+  lookahead_weight: 0.5
+  simulated_annealing:
+    t_init: 2.0
+    alpha: 0.92
+    max_iter: 50
+    steps_per_temp: 4
+
+scheduler_config_file: "config/scheduler_config.yaml"
+simulator_config_file: "config/simulator_config.yaml"
