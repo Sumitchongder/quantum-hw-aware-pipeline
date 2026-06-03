@@ -1,0 +1,5 @@
+configuration,mean_fidelity,mean_latency_ms,routing_overhead_percentage,rejection_rate_variance
+SABRE_Baseline,0.3587,41.55,0.00,0.0000
+Global_SA_Only,0.4124,49.12,18.21,0.0000
+SA_Plus_Local_ILP,0.4955,53.40,28.51,0.0000
+Full_Framework_with_XGBoost,0.6096,54.12,30.25,0.0142
