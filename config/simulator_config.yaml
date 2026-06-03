@@ -1,0 +1,12 @@
+simulation:
+  backend:
+    method: "density_matrix"
+    device: "GPU"  # Automatically falls back to CPU if nv_cuda context initialization fails
+    max_parallel_threads: 8
+  execution:
+    default_shots: 4096
+    optimization_level: 0  # Bypasses Qiskit native routing to preserve codesign mapping passes
+  noise_gate_times:
+    single_qubit_ns: 35.0
+    two_qubit_ns: 350.0
+    readout_ns: 1500.0
