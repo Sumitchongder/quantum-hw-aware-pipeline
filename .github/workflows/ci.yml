@@ -1,0 +1,123 @@
+name: Continuous Integration & Artifact Verification Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Code Quality & Style Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11 Runtime
+        uses: actions/setup-python@v5
+        with:
+          python-cache-dependency-path: docker/requirements.txt
+          python-version: '3.11'
+
+      - name: Install Code Formatting & Linting Tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 black isort
+
+      - name: Enforce Code Styling Standards (Black)
+        run: black --check . --exclude ".*\.ipynb"
+
+      - name: Enforce Import Sorting Optimization (isort)
+        run: isort --check-only --profile black .
+
+      - name: Structural Static Analysis & Syntax Verification (Flake8)
+        run: |
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings. E501 enforces professional line lengths.
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --statistics
+
+  unit-tests:
+    name: Numerical Regression & Verification Suite
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11']
+
+    steps:
+      - name: Checkout Source Code Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python Environment (v${{ matrix.python-version }})
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.matrix.python-version }}
+          cache: 'pip'
+          cache-dependency-path: docker/requirements.txt
+
+      - name: Install System-Level Linear Algebra Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libgomp1 liblapack-dev libblas-dev
+
+      - name: Install Core Compiler Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r docker/requirements.txt
+          pip install pytest-cov
+
+      - name: Execute Parallelized Pytest Validation & Code Coverage Tracking
+        env:
+          CUQUANTUM_ENABLE: 0 # Disable real GPU bindings on standard GitHub runners
+          PYTHONUNBUFFERED: 1
+        run: |
+          pytest tests/ \
+            -v \
+            --tb=short \
+            --cov=src \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage.xml
+
+      - name: Upload Computational Coverage Matrix to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  docker-build:
+    name: Container Lifecycle & Integration Verification
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx Context
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Local Production Container Target
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile
+          tags: quantum-codesign-pipeline:latest
+          outputs: type=docker,dest=/tmp/quantum-image.tar
+
+      - name: Load Image and Bootstrap Environment Integrity Checks
+        run: |
+          docker load --input /tmp/quantum-image.tar
+          docker images
+          
+      - name: Execute Internal Regression Harness inside Container Boundary
+        run: |
+          docker run --rm \
+            -e PYTHONUNBUFFERED=1 \
+            -e CUQUANTUM_ENABLE=0 \
+            quantum-codesign-pipeline:latest test
