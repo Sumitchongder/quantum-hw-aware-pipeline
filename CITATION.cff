@@ -27,7 +27,6 @@ abstract: >-
   raising algorithmic success probability by up to 68 % over SABRE on noisy
   quantum processors in the early fault-tolerance regime.
 preferred-citation:
-  type: conference-paper
   title: >-
     Hardware-aware Low-latency Quantum Compilation with Data-driven Lightweight
     Error Detection for Early Fault-Tolerant Systems
