@@ -47,5 +47,3 @@ All notable changes to the **Quantum Hardware-Aware Co-Design Pipeline** project
 
 ```
 
----
-
