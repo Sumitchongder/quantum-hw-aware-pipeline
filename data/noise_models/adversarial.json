@@ -1,0 +1,67 @@
+{
+  "name": "adversarial",
+  "description": "Adversarial noise profile (Table 2, paper §5). 2Q error rate doubled relative to Superconducting baseline; correlated Z noise lambda_Z=0.05 added to stress-test robustness.",
+  "basis_gates": ["id", "rz", "sx", "x", "cx", "reset"],
+  "coupling_map": [
+    [0,1],[1,0],[1,2],[2,1],[2,3],[3,2],
+    [3,4],[4,3],[4,5],[5,4],[5,6],[6,5],
+    [0,7],[7,0],[1,8],[8,1],[2,9],[9,2],
+    [3,10],[10,3],[4,11],[11,4],[5,12],[12,5],[6,13],[13,6]
+  ],
+  "qubits": {
+    "count": 14,
+    "properties": [
+      {"id":0,  "T1_us":49.5, "T2_us":59.5, "readout_error":0.050},
+      {"id":1,  "T1_us":50.5, "T2_us":60.5, "readout_error":0.050},
+      {"id":2,  "T1_us":49.0, "T2_us":59.0, "readout_error":0.050},
+      {"id":3,  "T1_us":51.0, "T2_us":61.0, "readout_error":0.050},
+      {"id":4,  "T1_us":48.5, "T2_us":58.5, "readout_error":0.050},
+      {"id":5,  "T1_us":50.0, "T2_us":60.0, "readout_error":0.050},
+      {"id":6,  "T1_us":51.5, "T2_us":61.5, "readout_error":0.050},
+      {"id":7,  "T1_us":49.0, "T2_us":59.0, "readout_error":0.050},
+      {"id":8,  "T1_us":50.5, "T2_us":60.5, "readout_error":0.050},
+      {"id":9,  "T1_us":49.5, "T2_us":59.5, "readout_error":0.050},
+      {"id":10, "T1_us":51.0, "T2_us":61.0, "readout_error":0.050},
+      {"id":11, "T1_us":49.0, "T2_us":59.0, "readout_error":0.050},
+      {"id":12, "T1_us":50.5, "T2_us":60.5, "readout_error":0.050},
+      {"id":13, "T1_us":50.0, "T2_us":60.0, "readout_error":0.050}
+    ]
+  },
+  "gate_errors": {
+    "single_qubit": {
+      "sx":  {"mean": 0.00500, "std": 0.00020},
+      "x":   {"mean": 0.00500, "std": 0.00020},
+      "rz":  {"mean": 0.0,     "std": 0.0},
+      "id":  {"mean": 0.00500, "std": 0.00020}
+    },
+    "two_qubit": {
+      "cx": {
+        "mean": 0.0500,
+        "std":  0.0010,
+        "note": "Doubled from Superconducting baseline per §5 adversarial definition"
+      }
+    }
+  },
+  "correlated_noise": {
+    "type": "ZZ_correlated",
+    "lambda_Z": 0.05,
+    "description": "Correlated Z noise on nearest-neighbour pairs with probability lambda_Z per two-qubit gate layer"
+  },
+  "profile_summary": {
+    "mean_1q_fidelity": 0.9950,
+    "mean_2q_fidelity": 0.9500,
+    "mean_readout_fidelity": 0.9500,
+    "mean_T1_us": 50.0,
+    "mean_T2_us": 60.0
+  },
+  "gate_times_ns": {
+    "sx": 35.6,
+    "x":  35.6,
+    "rz": 0.0,
+    "cx": 312.0,
+    "reset": 1000.0,
+    "measure": 1000.0
+  },
+  "noise_model_type": "depolarising_thermal_relaxation_correlated_Z",
+  "calibration_date": "2024-11-01"
+}

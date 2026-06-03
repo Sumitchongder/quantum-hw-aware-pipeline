@@ -1,0 +1,62 @@
+{
+  "name": "trapped_ion",
+  "description": "Trapped-ion noise profile (Table 2, paper §5). All-to-all connectivity; higher coherence times, lower gate error rates than superconducting.",
+  "basis_gates": ["rz", "ry", "rx", "xx", "measure"],
+  "coupling_map": "all_to_all",
+  "qubits": {
+    "count": 20,
+    "properties": [
+      {"id":0,  "T1_us":490.0, "T2_us":395.0, "readout_error":0.005},
+      {"id":1,  "T1_us":505.0, "T2_us":405.0, "readout_error":0.005},
+      {"id":2,  "T1_us":498.0, "T2_us":401.0, "readout_error":0.005},
+      {"id":3,  "T1_us":502.0, "T2_us":398.0, "readout_error":0.005},
+      {"id":4,  "T1_us":495.0, "T2_us":403.0, "readout_error":0.005},
+      {"id":5,  "T1_us":508.0, "T2_us":407.0, "readout_error":0.005},
+      {"id":6,  "T1_us":497.0, "T2_us":400.0, "readout_error":0.005},
+      {"id":7,  "T1_us":503.0, "T2_us":402.0, "readout_error":0.005},
+      {"id":8,  "T1_us":499.0, "T2_us":396.0, "readout_error":0.005},
+      {"id":9,  "T1_us":501.0, "T2_us":404.0, "readout_error":0.005},
+      {"id":10, "T1_us":494.0, "T2_us":397.0, "readout_error":0.005},
+      {"id":11, "T1_us":506.0, "T2_us":406.0, "readout_error":0.005},
+      {"id":12, "T1_us":500.0, "T2_us":400.0, "readout_error":0.005},
+      {"id":13, "T1_us":496.0, "T2_us":399.0, "readout_error":0.005},
+      {"id":14, "T1_us":504.0, "T2_us":403.0, "readout_error":0.005},
+      {"id":15, "T1_us":498.0, "T2_us":401.0, "readout_error":0.005},
+      {"id":16, "T1_us":502.0, "T2_us":405.0, "readout_error":0.005},
+      {"id":17, "T1_us":497.0, "T2_us":398.0, "readout_error":0.005},
+      {"id":18, "T1_us":503.0, "T2_us":402.0, "readout_error":0.005},
+      {"id":19, "T1_us":500.0, "T2_us":400.0, "readout_error":0.005}
+    ]
+  },
+  "gate_errors": {
+    "single_qubit": {
+      "rz":  {"mean": 0.00040, "std": 0.00005},
+      "ry":  {"mean": 0.00040, "std": 0.00005},
+      "rx":  {"mean": 0.00040, "std": 0.00005}
+    },
+    "two_qubit": {
+      "xx": {
+        "mean": 0.0050,
+        "std":  0.0002,
+        "note": "Molmer-Sorensen gate; all-to-all with chain-length overhead"
+      }
+    }
+  },
+  "profile_summary": {
+    "mean_1q_fidelity": 0.9996,
+    "mean_2q_fidelity": 0.9950,
+    "mean_readout_fidelity": 0.9950,
+    "mean_T1_us": 500.0,
+    "mean_T2_us": 400.0
+  },
+  "gate_times_ns": {
+    "rz":      10.0,
+    "ry":      10.0,
+    "rx":      10.0,
+    "xx":      200.0,
+    "measure": 500.0
+  },
+  "connectivity_overhead_factor": 1.0,
+  "noise_model_type": "depolarising_thermal_relaxation_all_to_all",
+  "calibration_date": "2024-11-01"
+}
