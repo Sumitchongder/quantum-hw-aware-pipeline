@@ -1,0 +1,13 @@
+model_parameters:
+  n_estimators: 250
+  max_depth: 6
+  learning_rate: 0.0412
+  subsample: 0.85
+  colsample_bytree: 0.8
+  tree_method: "hist"
+  objective: "reg:squarederror"
+
+weighting_factors:
+  omega_gate_density: 1.25
+  omega_entropy: 0.85
+  omega_coherence: 2.10
