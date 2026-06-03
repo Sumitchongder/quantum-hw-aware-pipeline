@@ -1,0 +1,68 @@
+{
+  "name": "ibm_lagos_superconducting",
+  "description": "Superconducting noise profile calibrated from publicly-available IBM Eagle-family data (Table 2, paper §5). Used as primary evaluation profile.",
+  "basis_gates": ["id", "rz", "sx", "x", "cx", "reset"],
+  "coupling_map": [
+    [0,1],[1,0],[1,2],[2,1],[2,3],[3,2],
+    [3,4],[4,3],[4,5],[5,4],[5,6],[6,5],
+    [0,7],[7,0],[1,8],[8,1],[2,9],[9,2],
+    [3,10],[10,3],[4,11],[11,4],[5,12],[12,5],[6,13],[13,6]
+  ],
+  "qubits": {
+    "count": 14,
+    "properties": [
+      {"id":0,  "T1_us":68.4,  "T2_us":88.7,  "freq_GHz":5.105, "readout_error":0.020, "readout_length_ns":1000},
+      {"id":1,  "T1_us":71.2,  "T2_us":91.3,  "freq_GHz":5.263, "readout_error":0.018, "readout_length_ns":1000},
+      {"id":2,  "T1_us":69.8,  "T2_us":89.5,  "freq_GHz":5.034, "readout_error":0.022, "readout_length_ns":1000},
+      {"id":3,  "T1_us":72.5,  "T2_us":93.1,  "freq_GHz":5.198, "readout_error":0.019, "readout_length_ns":1000},
+      {"id":4,  "T1_us":67.9,  "T2_us":87.2,  "freq_GHz":5.071, "readout_error":0.021, "readout_length_ns":1000},
+      {"id":5,  "T1_us":70.6,  "T2_us":90.4,  "freq_GHz":5.312, "readout_error":0.020, "readout_length_ns":1000},
+      {"id":6,  "T1_us":73.1,  "T2_us":94.2,  "freq_GHz":5.089, "readout_error":0.017, "readout_length_ns":1000},
+      {"id":7,  "T1_us":68.9,  "T2_us":88.0,  "freq_GHz":5.234, "readout_error":0.023, "readout_length_ns":1000},
+      {"id":8,  "T1_us":71.7,  "T2_us":91.8,  "freq_GHz":5.156, "readout_error":0.019, "readout_length_ns":1000},
+      {"id":9,  "T1_us":70.2,  "T2_us":89.9,  "freq_GHz":5.287, "readout_error":0.021, "readout_length_ns":1000},
+      {"id":10, "T1_us":72.0,  "T2_us":92.5,  "freq_GHz":5.048, "readout_error":0.020, "readout_length_ns":1000},
+      {"id":11, "T1_us":69.3,  "T2_us":88.5,  "freq_GHz":5.178, "readout_error":0.022, "readout_length_ns":1000},
+      {"id":12, "T1_us":71.5,  "T2_us":91.0,  "freq_GHz":5.221, "readout_error":0.018, "readout_length_ns":1000},
+      {"id":13, "T1_us":70.8,  "T2_us":90.7,  "freq_GHz":5.095, "readout_error":0.020, "readout_length_ns":1000}
+    ]
+  },
+  "gate_errors": {
+    "single_qubit": {
+      "sx":  {"mean": 0.00085, "std": 0.00012},
+      "x":   {"mean": 0.00090, "std": 0.00013},
+      "rz":  {"mean": 0.0,     "std": 0.0},
+      "id":  {"mean": 0.00085, "std": 0.00012}
+    },
+    "two_qubit": {
+      "cx": {
+        "per_pair": {
+          "0-1":  0.0135, "1-2":  0.0142, "2-3":  0.0138,
+          "3-4":  0.0141, "4-5":  0.0137, "5-6":  0.0140,
+          "0-7":  0.0143, "1-8":  0.0139, "2-9":  0.0136,
+          "3-10": 0.0144, "4-11": 0.0138, "5-12": 0.0141,
+          "6-13": 0.0135
+        },
+        "mean": 0.0140,
+        "std":  0.0003
+      }
+    }
+  },
+  "profile_summary": {
+    "mean_1q_fidelity": 0.9991,
+    "mean_2q_fidelity": 0.9860,
+    "mean_readout_fidelity": 0.9800,
+    "mean_T1_us": 70.0,
+    "mean_T2_us": 90.0
+  },
+  "gate_times_ns": {
+    "sx": 35.6,
+    "x":  35.6,
+    "rz": 0.0,
+    "cx": 312.0,
+    "reset": 1000.0,
+    "measure": 1000.0
+  },
+  "noise_model_type": "depolarising_thermal_relaxation",
+  "calibration_date": "2024-11-01"
+}
