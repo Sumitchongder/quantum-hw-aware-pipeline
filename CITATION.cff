@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+type: software
+title: "Hardware-Aware Quantum Compilation with Data-Driven Error Detection Pipeline"
+version: 1.0.0
+date-released: "2026-06-03"
+authors:
+  - family-names: Chongder
+    given-names: Sumit
+    orcid: "https://orcid.org/0009-0009-0654-3210"
+    affiliation: "Indian Institute of Technology Jodhpur"
+    email: sumitchongder960@gmail.com
+repository-code: "https://github.com/quantum-hw-aware-pipeline/quantum-hw-aware-pipeline"
+license: MIT
+keywords:
+  - quantum compilation
+  - quantum error detection
+  - early fault tolerance
+  - hardware-aware mapping
+  - cuQuantum
+  - syndrome scheduling
+  - HPC
+  - Qiskit
+abstract: >-
+  A co-design pipeline that jointly optimises qubit mapping, SWAP insertion,
+  and syndrome-schedule placement under a noise-weighted objective function,
+  raising algorithmic success probability by up to 68 % over SABRE on noisy
+  quantum processors in the early fault-tolerance regime.
+preferred-citation:
+  type: conference-paper
+  title: >-
+    Hardware-aware Low-latency Quantum Compilation with Data-driven Lightweight
+    Error Detection for Early Fault-Tolerant Systems
+  authors:
+    - family-names: Chongder
+      given-names: Sumit
+      orcid: "https://orcid.org/0009-0009-0654-3210"
+  year: 2026
