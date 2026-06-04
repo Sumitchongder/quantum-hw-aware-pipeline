@@ -1,7 +1,7 @@
 # Hardware-Aware Quantum Compilation with Data-Driven Error Detection
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.14%2B-blue.svg)](https://www.python.org/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/)
 [![Qiskit](https://img.shields.io/badge/Qiskit-%E2%89%A52.0-blueviolet)](https://qiskit.org/)
 
 Reproducibility repository for the paper:
